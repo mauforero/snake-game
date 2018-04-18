@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas Shapes</title>
+    <style>
+        canvas {
+            border: #222 1px solid;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mainCanvas" width="400" height="150">
+        <p>Your browser doesn't support canvas.</p>
+    </canvas>
+    <script>
+        var canvas, context;
+
+        function init() {
+            canvas = document.getElementById('mainCanvas');
+            context = canvas.getContext('2d');
+            draw();
+        }
+
+        function draw() {
+            // Draw a red square
+            // Set the shape fill color
+            context.fillStyle = '#f00';
+            // Draw the square
+            context.fillRect(30, 30, 50, 50);
+            // Set the border color
+            context.strokeStyle = '#222';
+            // Set the border width
+            context.lineWidth = 3;
+            // Draw a border only square
+            context.strokeRect(30, 30, 50, 50);
+
+            // Draw a black square
+            context.fillStyle = '#222';
+            context.fillRect(40, 40, 50, 50);
+
+            // Draw a text with a background gradient
+            // Set the font
+            context.font = '30pt Verdana';
+            // Create a gradient
+            var gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop('0', 'red');
+            gradient.addColorStop('1', 'black');
+            // Set the gradient as fill style
+            context.fillStyle = gradient;
+            // Draw the text
+            context.fillText("My Company", 100, 80);
+
+            // Draw a line
+            context.strokeStyle = '#222';
+            context.fillStyle = "#f00";
+            context.lineWidth = 2;
+
+            context.beginPath();
+            context.moveTo(89, 89);
+            context.lineTo(380, 89);
+            context.stroke();
+        }
+
+        init();
+    </script>
+</body>
+</html>
